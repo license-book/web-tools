@@ -10,51 +10,27 @@ import JsonFormatter from '@/components/tools/JsonFormatter';
 import QrGenerator from '@/components/tools/QrGenerator';
 import TextCleaner from '@/components/tools/TextCleaner';
 import PdfMerger from '@/components/tools/PdfMerger';
+import PdfSplitter from '@/components/tools/PdfSplitter';
 
-export function generateStaticParams() {
-  return tools.map((tool) => ({ slug: tool.slug }));
-}
+export function generateStaticParams() { return tools.map((tool) => ({ slug: tool.slug })); }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const { slug } = await params;
-  const tool = getTool(slug);
-  if (!tool) return {};
+  const { slug } = await params; const tool = getTool(slug); if (!tool) return {};
   return { title: tool.title, description: tool.description, keywords: tool.keywords };
 }
 
 export default async function ToolPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const tool = getTool(slug);
-  if (!tool) notFound();
-
-  const workspace = tool.slug === 'image-compressor'
-    ? <ImageCompressor />
-    : tool.slug === 'image-converter'
-      ? <ImageConverter />
-      : tool.slug === 'image-resizer'
-        ? <ImageResizer />
-        : tool.slug === 'json-formatter'
-          ? <JsonFormatter />
-          : tool.slug === 'qr-generator'
-            ? <QrGenerator />
-            : tool.slug === 'text-cleaner'
-              ? <TextCleaner />
-              : tool.slug === 'pdf-merge'
-                ? <PdfMerger />
-                : <ToolWorkspace tool={tool} />;
-
-  return (
-    <ToolShell tool={tool}>
-      <div className="toolPanel">
-        <div className="toolPanelHead">
-          <div>
-            <span className="eyebrow darkEyebrow">TOOL WORKSPACE</span>
-            <h2>{tool.title}</h2>
-          </div>
-          <span className="privacyChip">브라우저 중심 처리</span>
-        </div>
-        {workspace}
-      </div>
-    </ToolShell>
-  );
+  const { slug } = await params; const tool = getTool(slug); if (!tool) notFound();
+  const workspaces: Record<string, React.ReactNode> = {
+    'image-compressor': <ImageCompressor />,
+    'image-converter': <ImageConverter />,
+    'image-resizer': <ImageResizer />,
+    'json-formatter': <JsonFormatter />,
+    'qr-generator': <QrGenerator />,
+    'text-cleaner': <TextCleaner />,
+    'pdf-merge': <PdfMerger />,
+    'pdf-split': <PdfSplitter />,
+  };
+  const workspace = workspaces[tool.slug] ?? <ToolWorkspace tool={tool} />;
+  return <ToolShell tool={tool}><div className="toolPanel"><div className="toolPanelHead"><div><span className="eyebrow darkEyebrow">TOOL WORKSPACE</span><h2>{tool.title}</h2></div><span className="privacyChip">브라우저 중심 처리</span></div>{workspace}</div></ToolShell>;
 }
