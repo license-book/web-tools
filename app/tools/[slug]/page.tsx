@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { getTool, tools } from '@/data/tools';
 import ToolShell from '@/components/tools/ToolShell';
+import ToolWorkspace from '@/components/tools/ToolWorkspace';
 
 export function generateStaticParams() {
   return tools.map((tool) => ({ slug: tool.slug }));
@@ -22,12 +23,14 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
   return (
     <ToolShell tool={tool}>
       <div className="toolPanel">
-        <div className="placeholderBox">
+        <div className="toolPanelHead">
           <div>
-            <strong>{tool.title} 실행 영역</strong>
-            <p>V1 공통엔진 연결 완료. 다음 단계에서 실제 처리 엔진을 이 영역에 장착합니다.</p>
+            <span className="eyebrow darkEyebrow">TOOL WORKSPACE</span>
+            <h2>{tool.title}</h2>
           </div>
+          <span className="privacyChip">브라우저 중심 처리</span>
         </div>
+        <ToolWorkspace tool={tool} />
       </div>
     </ToolShell>
   );
