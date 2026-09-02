@@ -56,9 +56,9 @@ export const tools: ToolDefinition[] = [
     shortDescription: 'JSON을 보기 좋게 정렬하고 검사합니다.',
     description: 'JSON 데이터를 정렬하고 문법 오류를 빠르게 확인하는 개발 도구입니다.',
     category: 'developer',
-    keywords: ['JSON', 'formatter', 'validator'],
+    keywords: ['JSON', 'formatter', 'validator', 'JSON 정리', 'JSON 검사'],
     featured: true,
-    badge: '준비중',
+    badge: '사용 가능',
   },
 ];
 
