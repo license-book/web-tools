@@ -41,6 +41,16 @@ export const tools: ToolDefinition[] = [
     badge: '사용 가능',
   },
   {
+    slug: 'text-cleaner',
+    title: '텍스트 정리',
+    shortDescription: '공백, 빈 줄, 줄 여백을 정리하고 대소문자와 줄 순서를 바꿉니다.',
+    description: '텍스트를 서버에 전송하지 않고 브라우저에서 공백 정리, 빈 줄 정리, 줄 앞뒤 공백 제거, 대소문자 변환, 줄 정렬을 처리하는 무료 도구입니다.',
+    category: 'text',
+    keywords: ['텍스트 정리', '공백 제거', '빈줄 제거', '대소문자 변환', '문자열 정리', 'text cleaner'],
+    featured: true,
+    badge: '사용 가능',
+  },
+  {
     slug: 'qr-generator',
     title: 'QR 코드 생성기',
     shortDescription: 'URL과 텍스트를 QR 코드로 만듭니다.',
