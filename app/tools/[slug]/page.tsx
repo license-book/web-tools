@@ -9,6 +9,7 @@ import ImageResizer from '@/components/tools/ImageResizer';
 import JsonFormatter from '@/components/tools/JsonFormatter';
 import QrGenerator from '@/components/tools/QrGenerator';
 import TextCleaner from '@/components/tools/TextCleaner';
+import PdfMerger from '@/components/tools/PdfMerger';
 
 export function generateStaticParams() {
   return tools.map((tool) => ({ slug: tool.slug }));
@@ -38,7 +39,9 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
             ? <QrGenerator />
             : tool.slug === 'text-cleaner'
               ? <TextCleaner />
-              : <ToolWorkspace tool={tool} />;
+              : tool.slug === 'pdf-merge'
+                ? <PdfMerger />
+                : <ToolWorkspace tool={tool} />;
 
   return (
     <ToolShell tool={tool}>
