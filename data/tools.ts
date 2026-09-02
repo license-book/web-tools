@@ -18,7 +18,7 @@ export const tools: ToolDefinition[] = [
     category: 'image',
     keywords: ['이미지 압축', '사진 용량 줄이기', 'webp', 'jpg'],
     featured: true,
-    badge: '준비중',
+    badge: '사용 가능',
   },
   {
     slug: 'qr-generator',
