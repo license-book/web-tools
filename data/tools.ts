@@ -41,6 +41,16 @@ export const tools: ToolDefinition[] = [
     badge: '사용 가능',
   },
   {
+    slug: 'pdf-merge',
+    title: 'PDF 병합',
+    shortDescription: '여러 PDF를 원하는 순서대로 하나의 PDF로 합칩니다.',
+    description: 'PDF 파일을 서버에 업로드하지 않고 브라우저에서 순서를 정해 하나의 PDF로 병합하는 무료 도구입니다.',
+    category: 'pdf',
+    keywords: ['PDF 병합', 'PDF 합치기', 'PDF merge', 'PDF 파일 합치기'],
+    featured: true,
+    badge: '사용 가능',
+  },
+  {
     slug: 'text-cleaner',
     title: '텍스트 정리',
     shortDescription: '공백, 빈 줄, 줄 여백을 정리하고 대소문자와 줄 순서를 바꿉니다.',
