@@ -21,6 +21,16 @@ export const tools: ToolDefinition[] = [
     badge: '사용 가능',
   },
   {
+    slug: 'image-converter',
+    title: '이미지 형식 변환',
+    shortDescription: 'JPG, PNG, WebP 이미지를 원하는 형식으로 변환합니다.',
+    description: '이미지를 서버에 저장하지 않고 브라우저에서 JPG, PNG, WebP 형식으로 변환하는 무료 도구입니다.',
+    category: 'image',
+    keywords: ['이미지 변환', 'JPG 변환', 'PNG 변환', 'WebP 변환', '사진 변환'],
+    featured: true,
+    badge: '사용 가능',
+  },
+  {
     slug: 'qr-generator',
     title: 'QR 코드 생성기',
     shortDescription: 'URL과 텍스트를 QR 코드로 만듭니다.',
