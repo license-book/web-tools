@@ -36,7 +36,7 @@ export const tools: ToolDefinition[] = [
     shortDescription: '가로·세로 픽셀을 지정해 이미지 크기를 빠르게 변경합니다.',
     description: '원본 비율 유지 여부를 선택하고 여러 이미지의 크기를 브라우저에서 한 번에 조정하는 무료 도구입니다.',
     category: 'image',
-    keywords: ['이미지 리사이즈', '사진 크기 조절', '이미지 사이즈 변경', '픽셀 변경'],
+    keywords: ['이미지 리사이즈', '사진 크기 조절', '이미지 사이즈 변경', '픽셀 변경', 'resize image'],
     featured: true,
     badge: '사용 가능',
   },
