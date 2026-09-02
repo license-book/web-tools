@@ -6,6 +6,7 @@ import ToolWorkspace from '@/components/tools/ToolWorkspace';
 import ImageCompressor from '@/components/tools/ImageCompressor';
 import ImageConverter from '@/components/tools/ImageConverter';
 import ImageResizer from '@/components/tools/ImageResizer';
+import JsonFormatter from '@/components/tools/JsonFormatter';
 
 export function generateStaticParams() {
   return tools.map((tool) => ({ slug: tool.slug }));
@@ -29,7 +30,9 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
       ? <ImageConverter />
       : tool.slug === 'image-resizer'
         ? <ImageResizer />
-        : <ToolWorkspace tool={tool} />;
+        : tool.slug === 'json-formatter'
+          ? <JsonFormatter />
+          : <ToolWorkspace tool={tool} />;
 
   return (
     <ToolShell tool={tool}>
