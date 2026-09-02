@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { getTool, tools } from '@/data/tools';
 import ToolShell from '@/components/tools/ToolShell';
 import ToolWorkspace from '@/components/tools/ToolWorkspace';
+import ImageCompressor from '@/components/tools/ImageCompressor';
 
 export function generateStaticParams() {
   return tools.map((tool) => ({ slug: tool.slug }));
@@ -20,6 +21,10 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
   const tool = getTool(slug);
   if (!tool) notFound();
 
+  const workspace = tool.slug === 'image-compressor'
+    ? <ImageCompressor />
+    : <ToolWorkspace tool={tool} />;
+
   return (
     <ToolShell tool={tool}>
       <div className="toolPanel">
@@ -30,7 +35,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
           </div>
           <span className="privacyChip">브라우저 중심 처리</span>
         </div>
-        <ToolWorkspace tool={tool} />
+        {workspace}
       </div>
     </ToolShell>
   );
