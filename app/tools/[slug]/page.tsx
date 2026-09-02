@@ -4,6 +4,7 @@ import { getTool, tools } from '@/data/tools';
 import ToolShell from '@/components/tools/ToolShell';
 import ToolWorkspace from '@/components/tools/ToolWorkspace';
 import ImageCompressor from '@/components/tools/ImageCompressor';
+import ImageConverter from '@/components/tools/ImageConverter';
 
 export function generateStaticParams() {
   return tools.map((tool) => ({ slug: tool.slug }));
@@ -23,7 +24,9 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
 
   const workspace = tool.slug === 'image-compressor'
     ? <ImageCompressor />
-    : <ToolWorkspace tool={tool} />;
+    : tool.slug === 'image-converter'
+      ? <ImageConverter />
+      : <ToolWorkspace tool={tool} />;
 
   return (
     <ToolShell tool={tool}>
