@@ -6,13 +6,9 @@ import ToolWorkspace from '@/components/tools/ToolWorkspace';
 import ImageCompressor from '@/components/tools/ImageCompressor';
 import ImageConverter from '@/components/tools/ImageConverter';
 import ImageResizer from '@/components/tools/ImageResizer';
-import ImageToPdf from '@/components/tools/ImageToPdf';
-import PdfToImage from '@/components/tools/PdfToImage';
 import JsonFormatter from '@/components/tools/JsonFormatter';
 import QrGenerator from '@/components/tools/QrGenerator';
 import TextCleaner from '@/components/tools/TextCleaner';
-import PdfMerger from '@/components/tools/PdfMerger';
-import PdfSplitter from '@/components/tools/PdfSplitter';
 import ColorConverter from '@/components/tools/ColorConverter';
 
 export function generateStaticParams() { return tools.map((tool) => ({ slug: tool.slug })); }
@@ -20,9 +16,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function ToolPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params; const tool = getTool(slug); if (!tool) notFound();
   const workspaces: Record<string, React.ReactNode> = {
-    'image-compressor': <ImageCompressor />, 'image-converter': <ImageConverter />, 'image-resizer': <ImageResizer />, 'image-to-pdf': <ImageToPdf />,
-    'pdf-to-image': <PdfToImage />, 'json-formatter': <JsonFormatter />, 'qr-generator': <QrGenerator />, 'text-cleaner': <TextCleaner />,
-    'pdf-merge': <PdfMerger />, 'pdf-split': <PdfSplitter />, 'color-converter': <ColorConverter />,
+    'image-compressor': <ImageCompressor />,
+    'image-converter': <ImageConverter />,
+    'image-resizer': <ImageResizer />,
+    'json-formatter': <JsonFormatter />,
+    'qr-generator': <QrGenerator />,
+    'text-cleaner': <TextCleaner />,
+    'color-converter': <ColorConverter />,
   };
   const workspace = workspaces[tool.slug] ?? <ToolWorkspace tool={tool} />;
   return <ToolShell tool={tool}><div className="toolPanel"><div className="toolPanelHead"><div><span className="eyebrow darkEyebrow">TOOL WORKSPACE</span><h2>{tool.title}</h2></div><span className="privacyChip">브라우저 중심 처리</span></div>{workspace}</div></ToolShell>;
