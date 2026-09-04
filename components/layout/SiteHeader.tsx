@@ -10,7 +10,8 @@ export default function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const homeOverlay = pathname === '/' && !scrolled && !open;
+  const initialTop = !scrolled && !open;
+  const homeOverlay = pathname === '/' && initialTop;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -20,7 +21,7 @@ export default function SiteHeader() {
   }, []);
 
   return (
-    <header className={`siteHeader ${homeOverlay ? 'headerOverlay' : 'headerSolid'}`}>
+    <header className={`siteHeader ${homeOverlay ? 'headerOverlay' : 'headerSolid'} ${initialTop ? 'headerAtTop' : ''}`}>
       <div className="headerInner">
         <Link href="/" className="brand" aria-label="웹툴 홈" onClick={() => setOpen(false)}>
           <span className="brandMark" aria-hidden="true">W</span>
