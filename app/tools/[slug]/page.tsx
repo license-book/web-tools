@@ -6,6 +6,7 @@ import ToolWorkspace from '@/components/tools/ToolWorkspace';
 import ImageCompressor from '@/components/tools/ImageCompressor';
 import ImageConverter from '@/components/tools/ImageConverter';
 import ImageResizer from '@/components/tools/ImageResizer';
+import ImageToPdf from '@/components/tools/ImageToPdf';
 import JsonFormatter from '@/components/tools/JsonFormatter';
 import QrGenerator from '@/components/tools/QrGenerator';
 import TextCleaner from '@/components/tools/TextCleaner';
@@ -21,6 +22,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
     'image-compressor': <ImageCompressor />,
     'image-converter': <ImageConverter />,
     'image-resizer': <ImageResizer />,
+    'image-to-pdf': <ImageToPdf />,
     'json-formatter': <JsonFormatter />,
     'qr-generator': <QrGenerator />,
     'text-cleaner': <TextCleaner />,
