@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { categories } from '@/data/tools';
+import { categories, tools } from '@/data/tools';
 import ToolSearch from '@/components/search/ToolSearch';
 
 export default function SiteHeader() {
@@ -11,7 +11,10 @@ export default function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const initialTop = !scrolled && !open;
-  const homeOverlay = pathname === '/' && initialTop;
+
+  const toolSlug = pathname.startsWith('/tools/') ? pathname.split('/')[2] : '';
+  const currentTool = toolSlug ? tools.find((tool) => tool.slug === toolSlug) : undefined;
+  const activeCategory = currentTool?.category ?? categories.find((category) => pathname.startsWith(`/category/${category.slug}`))?.slug;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -21,7 +24,7 @@ export default function SiteHeader() {
   }, []);
 
   return (
-    <header className={`siteHeader ${homeOverlay ? 'headerOverlay' : 'headerSolid'} ${initialTop ? 'headerAtTop' : ''}`}>
+    <header className={`siteHeader ${initialTop ? 'headerOverlay headerAtTop' : 'headerSolid'}`}>
       <div className="headerInner">
         <Link href="/" className="brand" aria-label="웹툴 홈" onClick={() => setOpen(false)}>
           <span className="brandMark" aria-hidden="true">W</span>
@@ -29,7 +32,14 @@ export default function SiteHeader() {
         </Link>
         <nav className="desktopNav" aria-label="주요 메뉴">
           {categories.map((category) => (
-            <Link key={category.slug} href={`/category/${category.slug}`}>{category.name}</Link>
+            <Link
+              key={category.slug}
+              href={`/category/${category.slug}`}
+              className={activeCategory === category.slug ? 'isActive' : undefined}
+              aria-current={activeCategory === category.slug ? 'page' : undefined}
+            >
+              {category.name}
+            </Link>
           ))}
         </nav>
         <div className="headerSearch"><ToolSearch compact /></div>
