@@ -14,6 +14,9 @@ import ColorConverter from '@/components/tools/ColorConverter';
 import PdfMerger from '@/components/tools/PdfMerger';
 import PdfSplitter from '@/components/tools/PdfSplitter';
 import PdfToImage from '@/components/tools/PdfToImage';
+import CharacterCounter from '@/components/tools/CharacterCounter';
+import Base64Tool from '@/components/tools/Base64Tool';
+import UuidGenerator from '@/components/tools/UuidGenerator';
 
 export function generateStaticParams() { return tools.map((tool) => ({ slug: tool.slug })); }
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> { const { slug } = await params; const tool = getTool(slug); if (!tool) return {}; return { title: tool.title, description: tool.description, keywords: tool.keywords }; }
@@ -31,6 +34,9 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
     'pdf-merge': <PdfMerger />,
     'pdf-split': <PdfSplitter />,
     'pdf-to-image': <PdfToImage />,
+    'character-counter': <CharacterCounter />,
+    'base64-tool': <Base64Tool />,
+    'uuid-generator': <UuidGenerator />,
   };
   const workspace = workspaces[tool.slug] ?? <ToolWorkspace tool={tool} />;
   return <ToolShell tool={tool}><div className="toolPanel"><div className="toolPanelHead"><div><span className="eyebrow darkEyebrow">TOOL WORKSPACE</span><h2>{tool.title}</h2></div><span className="privacyChip">브라우저 중심 처리</span></div>{workspace}</div></ToolShell>;
