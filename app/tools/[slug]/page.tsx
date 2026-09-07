@@ -22,6 +22,11 @@ import UrlCodec from '@/components/tools/UrlCodec';
 import TimestampConverter from '@/components/tools/TimestampConverter';
 import HashGenerator from '@/components/tools/HashGenerator';
 import RegexTester from '@/components/tools/RegexTester';
+import JsonYamlConverter from '@/components/tools/JsonYamlConverter';
+import JsonCsvConverter from '@/components/tools/JsonCsvConverter';
+import DiffChecker from '@/components/tools/DiffChecker';
+import SqlFormatter from '@/components/tools/SqlFormatter';
+import CronTool from '@/components/tools/CronTool';
 
 export function generateStaticParams() { return tools.map((tool) => ({ slug: tool.slug })); }
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> { const { slug } = await params; const tool = getTool(slug); if (!tool) return {}; return { title: tool.title, description: tool.description, keywords: tool.keywords }; }
@@ -47,6 +52,11 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
     'timestamp-converter': <TimestampConverter />,
     'hash-generator': <HashGenerator />,
     'regex-tester': <RegexTester />,
+    'json-yaml-converter': <JsonYamlConverter />,
+    'json-csv-converter': <JsonCsvConverter />,
+    'diff-checker': <DiffChecker />,
+    'sql-formatter': <SqlFormatter />,
+    'cron-tool': <CronTool />,
   };
   const workspace = workspaces[tool.slug] ?? <ToolWorkspace tool={tool} />;
   return <ToolShell tool={tool}><div className="toolPanel"><div className="toolPanelHead"><div><span className="eyebrow darkEyebrow">TOOL WORKSPACE</span><h2>{tool.title}</h2></div><span className="privacyChip">브라우저 중심 처리</span></div>{workspace}</div></ToolShell>;
