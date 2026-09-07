@@ -32,6 +32,11 @@ import MarkdownPreview from '@/components/tools/MarkdownPreview';
 import MimeTypeLookup from '@/components/tools/MimeTypeLookup';
 import HttpStatusLookup from '@/components/tools/HttpStatusLookup';
 import UnicodeEscapeTool from '@/components/tools/UnicodeEscapeTool';
+import HtmlEntityTool from '@/components/tools/HtmlEntityTool';
+import UrlParser from '@/components/tools/UrlParser';
+import CssUnitConverter from '@/components/tools/CssUnitConverter';
+import IpSubnetCalculator from '@/components/tools/IpSubnetCalculator';
+import UserAgentParser from '@/components/tools/UserAgentParser';
 
 export function generateStaticParams() { return tools.map((tool) => ({ slug: tool.slug })); }
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> { const { slug } = await params; const tool = getTool(slug); if (!tool) return {}; return { title: tool.title, description: tool.description, keywords: tool.keywords }; }
@@ -67,6 +72,11 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
     'mime-type-lookup': <MimeTypeLookup />,
     'http-status-lookup': <HttpStatusLookup />,
     'unicode-escape-tool': <UnicodeEscapeTool />,
+    'html-entity-tool': <HtmlEntityTool />,
+    'url-parser': <UrlParser />,
+    'css-unit-converter': <CssUnitConverter />,
+    'ip-subnet-calculator': <IpSubnetCalculator />,
+    'user-agent-parser': <UserAgentParser />,
   };
   const workspace = workspaces[tool.slug] ?? <ToolWorkspace tool={tool} />;
   return <ToolShell tool={tool}><div className="toolPanel"><div className="toolPanelHead"><div><span className="eyebrow darkEyebrow">TOOL WORKSPACE</span><h2>{tool.title}</h2></div><span className="privacyChip">브라우저 중심 처리</span></div>{workspace}</div></ToolShell>;
