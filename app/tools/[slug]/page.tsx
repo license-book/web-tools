@@ -17,6 +17,11 @@ import PdfToImage from '@/components/tools/PdfToImage';
 import CharacterCounter from '@/components/tools/CharacterCounter';
 import Base64Tool from '@/components/tools/Base64Tool';
 import UuidGenerator from '@/components/tools/UuidGenerator';
+import JwtDecoder from '@/components/tools/JwtDecoder';
+import UrlCodec from '@/components/tools/UrlCodec';
+import TimestampConverter from '@/components/tools/TimestampConverter';
+import HashGenerator from '@/components/tools/HashGenerator';
+import RegexTester from '@/components/tools/RegexTester';
 
 export function generateStaticParams() { return tools.map((tool) => ({ slug: tool.slug })); }
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> { const { slug } = await params; const tool = getTool(slug); if (!tool) return {}; return { title: tool.title, description: tool.description, keywords: tool.keywords }; }
@@ -37,6 +42,11 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
     'character-counter': <CharacterCounter />,
     'base64-tool': <Base64Tool />,
     'uuid-generator': <UuidGenerator />,
+    'jwt-decoder': <JwtDecoder />,
+    'url-codec': <UrlCodec />,
+    'timestamp-converter': <TimestampConverter />,
+    'hash-generator': <HashGenerator />,
+    'regex-tester': <RegexTester />,
   };
   const workspace = workspaces[tool.slug] ?? <ToolWorkspace tool={tool} />;
   return <ToolShell tool={tool}><div className="toolPanel"><div className="toolPanelHead"><div><span className="eyebrow darkEyebrow">TOOL WORKSPACE</span><h2>{tool.title}</h2></div><span className="privacyChip">브라우저 중심 처리</span></div>{workspace}</div></ToolShell>;
