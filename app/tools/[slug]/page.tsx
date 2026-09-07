@@ -1,91 +1,13 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { getTool, tools } from '@/data/tools';
-import ToolShell from '@/components/tools/ToolShell';
-import ToolWorkspace from '@/components/tools/ToolWorkspace';
-import ImageCompressor from '@/components/tools/ImageCompressor';
-import ImageConverter from '@/components/tools/ImageConverter';
-import ImageResizer from '@/components/tools/ImageResizer';
-import ImageToPdf from '@/components/tools/ImageToPdf';
-import JsonFormatter from '@/components/tools/JsonFormatter';
-import QrGenerator from '@/components/tools/QrGenerator';
-import TextCleaner from '@/components/tools/TextCleaner';
-import ColorConverter from '@/components/tools/ColorConverter';
-import PdfMerger from '@/components/tools/PdfMerger';
-import PdfSplitter from '@/components/tools/PdfSplitter';
-import PdfToImage from '@/components/tools/PdfToImage';
-import CharacterCounter from '@/components/tools/CharacterCounter';
-import Base64Tool from '@/components/tools/Base64Tool';
-import UuidGenerator from '@/components/tools/UuidGenerator';
-import JwtDecoder from '@/components/tools/JwtDecoder';
-import UrlCodec from '@/components/tools/UrlCodec';
-import TimestampConverter from '@/components/tools/TimestampConverter';
-import HashGenerator from '@/components/tools/HashGenerator';
-import RegexTester from '@/components/tools/RegexTester';
-import JsonYamlConverter from '@/components/tools/JsonYamlConverter';
-import JsonCsvConverter from '@/components/tools/JsonCsvConverter';
-import DiffChecker from '@/components/tools/DiffChecker';
-import SqlFormatter from '@/components/tools/SqlFormatter';
-import CronTool from '@/components/tools/CronTool';
-import CodeFormatter from '@/components/tools/CodeFormatter';
-import MarkdownPreview from '@/components/tools/MarkdownPreview';
-import MimeTypeLookup from '@/components/tools/MimeTypeLookup';
-import HttpStatusLookup from '@/components/tools/HttpStatusLookup';
-import UnicodeEscapeTool from '@/components/tools/UnicodeEscapeTool';
-import HtmlEntityTool from '@/components/tools/HtmlEntityTool';
-import UrlParser from '@/components/tools/UrlParser';
-import CssUnitConverter from '@/components/tools/CssUnitConverter';
-import IpSubnetCalculator from '@/components/tools/IpSubnetCalculator';
-import UserAgentParser from '@/components/tools/UserAgentParser';
-import JsonPathTester from '@/components/tools/JsonPathTester';
-import LoremIpsumGenerator from '@/components/tools/LoremIpsumGenerator';
-import RandomStringGenerator from '@/components/tools/RandomStringGenerator';
-import DnsRecordHelper from '@/components/tools/DnsRecordHelper';
-
-export function generateStaticParams() { return tools.map((tool) => ({ slug: tool.slug })); }
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> { const { slug } = await params; const tool = getTool(slug); if (!tool) return {}; return { title: tool.title, description: tool.description, keywords: tool.keywords }; }
-export default async function ToolPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params; const tool = getTool(slug); if (!tool) notFound();
-  const workspaces: Record<string, React.ReactNode> = {
-    'image-compressor': <ImageCompressor />,
-    'image-converter': <ImageConverter />,
-    'image-resizer': <ImageResizer />,
-    'image-to-pdf': <ImageToPdf />,
-    'json-formatter': <JsonFormatter />,
-    'qr-generator': <QrGenerator />,
-    'text-cleaner': <TextCleaner />,
-    'color-converter': <ColorConverter />,
-    'pdf-merge': <PdfMerger />,
-    'pdf-split': <PdfSplitter />,
-    'pdf-to-image': <PdfToImage />,
-    'character-counter': <CharacterCounter />,
-    'base64-tool': <Base64Tool />,
-    'uuid-generator': <UuidGenerator />,
-    'jwt-decoder': <JwtDecoder />,
-    'url-codec': <UrlCodec />,
-    'timestamp-converter': <TimestampConverter />,
-    'hash-generator': <HashGenerator />,
-    'regex-tester': <RegexTester />,
-    'json-yaml-converter': <JsonYamlConverter />,
-    'json-csv-converter': <JsonCsvConverter />,
-    'diff-checker': <DiffChecker />,
-    'sql-formatter': <SqlFormatter />,
-    'cron-tool': <CronTool />,
-    'code-formatter': <CodeFormatter />,
-    'markdown-preview': <MarkdownPreview />,
-    'mime-type-lookup': <MimeTypeLookup />,
-    'http-status-lookup': <HttpStatusLookup />,
-    'unicode-escape-tool': <UnicodeEscapeTool />,
-    'html-entity-tool': <HtmlEntityTool />,
-    'url-parser': <UrlParser />,
-    'css-unit-converter': <CssUnitConverter />,
-    'ip-subnet-calculator': <IpSubnetCalculator />,
-    'user-agent-parser': <UserAgentParser />,
-    'json-path-tester': <JsonPathTester />,
-    'lorem-ipsum-generator': <LoremIpsumGenerator />,
-    'random-string-generator': <RandomStringGenerator />,
-    'dns-record-helper': <DnsRecordHelper />,
-  };
-  const workspace = workspaces[tool.slug] ?? <ToolWorkspace tool={tool} />;
-  return <ToolShell tool={tool}><div className="toolPanel"><div className="toolPanelHead"><div><span className="eyebrow darkEyebrow">TOOL WORKSPACE</span><h2>{tool.title}</h2></div><span className="privacyChip">브라우저 중심 처리</span></div>{workspace}</div></ToolShell>;
-}
+import ToolShell from '@/components/tools/ToolShell'; import ToolWorkspace from '@/components/tools/ToolWorkspace';
+import ImageCompressor from '@/components/tools/ImageCompressor'; import ImageConverter from '@/components/tools/ImageConverter'; import ImageResizer from '@/components/tools/ImageResizer'; import ImageToPdf from '@/components/tools/ImageToPdf'; import JsonFormatter from '@/components/tools/JsonFormatter'; import QrGenerator from '@/components/tools/QrGenerator'; import TextCleaner from '@/components/tools/TextCleaner'; import ColorConverter from '@/components/tools/ColorConverter'; import PdfMerger from '@/components/tools/PdfMerger'; import PdfSplitter from '@/components/tools/PdfSplitter'; import PdfToImage from '@/components/tools/PdfToImage'; import CharacterCounter from '@/components/tools/CharacterCounter'; import Base64Tool from '@/components/tools/Base64Tool'; import UuidGenerator from '@/components/tools/UuidGenerator'; import JwtDecoder from '@/components/tools/JwtDecoder'; import UrlCodec from '@/components/tools/UrlCodec'; import TimestampConverter from '@/components/tools/TimestampConverter'; import HashGenerator from '@/components/tools/HashGenerator'; import RegexTester from '@/components/tools/RegexTester'; import JsonYamlConverter from '@/components/tools/JsonYamlConverter'; import JsonCsvConverter from '@/components/tools/JsonCsvConverter'; import DiffChecker from '@/components/tools/DiffChecker'; import SqlFormatter from '@/components/tools/SqlFormatter'; import CronTool from '@/components/tools/CronTool'; import CodeFormatter from '@/components/tools/CodeFormatter'; import MarkdownPreview from '@/components/tools/MarkdownPreview'; import MimeTypeLookup from '@/components/tools/MimeTypeLookup'; import HttpStatusLookup from '@/components/tools/HttpStatusLookup'; import UnicodeEscapeTool from '@/components/tools/UnicodeEscapeTool'; import HtmlEntityTool from '@/components/tools/HtmlEntityTool'; import UrlParser from '@/components/tools/UrlParser'; import CssUnitConverter from '@/components/tools/CssUnitConverter'; import IpSubnetCalculator from '@/components/tools/IpSubnetCalculator'; import UserAgentParser from '@/components/tools/UserAgentParser'; import JsonPathTester from '@/components/tools/JsonPathTester'; import LoremIpsumGenerator from '@/components/tools/LoremIpsumGenerator'; import RandomStringGenerator from '@/components/tools/RandomStringGenerator'; import DnsRecordHelper from '@/components/tools/DnsRecordHelper';
+import ImageQuickEditor from '@/components/tools/ImageQuickEditor'; import TargetImageCompressor from '@/components/tools/TargetImageCompressor'; import PassportPhotoResizer from '@/components/tools/PassportPhotoResizer';
+import {PasswordGenerator,RandomPicker,DateCalculator,DdayCalculator,AgeCalculator,FileSizeConverter,TextSorter} from '@/components/tools/EverydayTools';
+import {CaseConverter,DuplicateLineRemover,ListNumberer,SlugMaker,PercentageCalculator,AspectRatioCalculator,DataUrlConverter} from '@/components/tools/MoreEverydayTools';
+import {GrayscaleImage,SocialImageResizer} from '@/components/tools/ImageExtraTools'; import {FindReplace,NumberExtractor,LinkExtractor,EmailExtractor} from '@/components/tools/TextExtraTools'; import {TimeConverter,RandomNumber,CountdownText,NumberBaseConverter} from '@/components/tools/UtilityExtraTools'; import {GradientGenerator,ShadowGenerator,BorderRadiusGenerator} from '@/components/tools/DesignEverydayTools';
+export function generateStaticParams(){return tools.map(tool=>({slug:tool.slug}))} export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata>{const {slug}=await params;const tool=getTool(slug);return tool?{title:tool.title,description:tool.description,keywords:tool.keywords}:{}}
+export default async function ToolPage({params}:{params:Promise<{slug:string}>}){const {slug}=await params;const tool=getTool(slug);if(!tool)notFound();const w:Record<string,React.ReactNode>={
+'image-compressor':<ImageCompressor/>,'image-converter':<ImageConverter/>,'image-resizer':<ImageResizer/>,'image-to-pdf':<ImageToPdf/>,'json-formatter':<JsonFormatter/>,'qr-generator':<QrGenerator/>,'text-cleaner':<TextCleaner/>,'color-converter':<ColorConverter/>,'pdf-merge':<PdfMerger/>,'pdf-split':<PdfSplitter/>,'pdf-to-image':<PdfToImage/>,'character-counter':<CharacterCounter/>,'base64-tool':<Base64Tool/>,'uuid-generator':<UuidGenerator/>,'jwt-decoder':<JwtDecoder/>,'url-codec':<UrlCodec/>,'timestamp-converter':<TimestampConverter/>,'hash-generator':<HashGenerator/>,'regex-tester':<RegexTester/>,'json-yaml-converter':<JsonYamlConverter/>,'json-csv-converter':<JsonCsvConverter/>,'diff-checker':<DiffChecker/>,'sql-formatter':<SqlFormatter/>,'cron-tool':<CronTool/>,'code-formatter':<CodeFormatter/>,'markdown-preview':<MarkdownPreview/>,'mime-type-lookup':<MimeTypeLookup/>,'http-status-lookup':<HttpStatusLookup/>,'unicode-escape-tool':<UnicodeEscapeTool/>,'html-entity-tool':<HtmlEntityTool/>,'url-parser':<UrlParser/>,'css-unit-converter':<CssUnitConverter/>,'ip-subnet-calculator':<IpSubnetCalculator/>,'user-agent-parser':<UserAgentParser/>,'json-path-tester':<JsonPathTester/>,'lorem-ipsum-generator':<LoremIpsumGenerator/>,'random-string-generator':<RandomStringGenerator/>,'dns-record-helper':<DnsRecordHelper/>,
+'image-quick-editor':<ImageQuickEditor/>,'target-image-compressor':<TargetImageCompressor/>,'id-photo-resizer':<PassportPhotoResizer/>,'password-generator':<PasswordGenerator/>,'random-picker':<RandomPicker/>,'date-calculator':<DateCalculator/>,'dday-calculator':<DdayCalculator/>,'age-calculator':<AgeCalculator/>,'file-size-converter':<FileSizeConverter/>,'text-sorter':<TextSorter/>,'case-converter':<CaseConverter/>,'duplicate-line-remover':<DuplicateLineRemover/>,'list-numberer':<ListNumberer/>,'slug-maker':<SlugMaker/>,'percentage-calculator':<PercentageCalculator/>,'aspect-ratio-calculator':<AspectRatioCalculator/>,'data-url-converter':<DataUrlConverter/>,'grayscale-image':<GrayscaleImage/>,'social-image-resizer':<SocialImageResizer/>,'find-replace':<FindReplace/>,'number-extractor':<NumberExtractor/>,'link-extractor':<LinkExtractor/>,'email-extractor':<EmailExtractor/>,'time-converter':<TimeConverter/>,'random-number':<RandomNumber/>,'time-format-converter':<CountdownText/>,'number-base-converter':<NumberBaseConverter/>,'gradient-generator':<GradientGenerator/>,'shadow-generator':<ShadowGenerator/>,'border-radius-generator':<BorderRadiusGenerator/>};const workspace=w[tool.slug]??<ToolWorkspace tool={tool}/>;return <ToolShell tool={tool}><div className="toolPanel"><div className="toolPanelHead"><div><span className="eyebrow darkEyebrow">TOOL WORKSPACE</span><h2>{tool.title}</h2></div><span className="privacyChip">브라우저 중심 처리</span></div>{workspace}</div></ToolShell>}
