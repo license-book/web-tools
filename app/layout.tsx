@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import './footer.css';
+import './info-pages.css';
 import './tool-engine.css';
 import './tool-workspace.css';
 import SiteHeader from '@/components/layout/SiteHeader';
