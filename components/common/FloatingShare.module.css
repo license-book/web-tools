@@ -1,0 +1,186 @@
+.root {
+  position: fixed;
+  right: 16px;
+  bottom: 20px;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.menu {
+  width: 210px;
+  margin-bottom: 4px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  background: #fff;
+  padding: 8px;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.15);
+}
+
+.menuTitle {
+  margin: 0;
+  padding: 4px 12px 8px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.menuItem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  padding: 10px 12px;
+  color: #1e293b;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 900;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 160ms ease;
+}
+
+.menuItem:hover {
+  background: #f8fafc;
+}
+
+.kakaoHover:hover {
+  background: #fefce8;
+}
+
+.naverHover:hover {
+  background: #f0fdf4;
+}
+
+.facebookHover:hover {
+  background: #eff6ff;
+}
+
+.brandIcon {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.kakao {
+  background: #fde047;
+  color: #0f172a;
+  font-size: 12px;
+}
+
+.naver {
+  background: #22c55e;
+  color: #fff;
+}
+
+.x {
+  background: #020617;
+  color: #fff;
+  font-size: 14px;
+}
+
+.facebook {
+  background: #2563eb;
+  color: #fff;
+  font-size: 14px;
+}
+
+.link {
+  background: #f1f5f9;
+  color: #334155;
+}
+
+.divider {
+  height: 1px;
+  margin: 4px 0;
+  background: #f1f5f9;
+}
+
+.shareButton,
+.topButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  color: #334155;
+  cursor: pointer;
+  transition: transform 160ms ease, border-color 160ms ease, color 160ms ease, box-shadow 160ms ease;
+}
+
+.shareButton {
+  height: 48px;
+  gap: 8px;
+  border-radius: 999px;
+  padding: 0 16px;
+  color: #1e293b;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 900;
+  box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.10), 0 4px 6px -4px rgba(15, 23, 42, 0.10);
+}
+
+.topButton {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.10), 0 2px 4px -2px rgba(15, 23, 42, 0.10);
+}
+
+.shareButton:hover,
+.topButton:hover {
+  transform: translateY(-2px);
+  border-color: #bfdbfe;
+  color: #1d4ed8;
+}
+
+.shareButton:hover {
+  box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.10), 0 8px 10px -6px rgba(15, 23, 42, 0.10);
+}
+
+.shareIcon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+}
+
+.linkIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.shareLabel {
+  display: none;
+}
+
+.shareButton:focus-visible,
+.topButton:focus-visible,
+.menuItem:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+@media (min-width: 640px) {
+  .shareLabel {
+    display: inline;
+  }
+}
+
+@media (min-width: 768px) {
+  .root {
+    right: 24px;
+    bottom: 32px;
+  }
+}
