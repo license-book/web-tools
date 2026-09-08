@@ -4,6 +4,7 @@ import './tool-engine.css';
 import './tool-workspace.css';
 import SiteHeader from '@/components/layout/SiteHeader';
 import SiteFooter from '@/components/layout/SiteFooter';
+import FloatingShare from '@/components/common/FloatingShare';
 
 export const metadata: Metadata = {
   title: { default: 'WEBTOOLS | 무료 웹 도구', template: '%s | WEBTOOLS' },
@@ -17,6 +18,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <SiteHeader />
         {children}
         <SiteFooter />
+        <FloatingShare />
       </body>
     </html>
   );
