@@ -41,7 +41,7 @@ export default function SiteFooter() {
               <Link href="/privacy">개인정보처리방침</Link>
               <Link href="/terms">이용약관</Link>
               <Link href="/disclaimer">정보 이용 안내</Link>
-              <Link href="/sitemap.xml">사이트맵</Link>
+              <Link href="/site-map">사이트맵</Link>
               <Link href="/contact">문의</Link>
             </nav>
           </div>
