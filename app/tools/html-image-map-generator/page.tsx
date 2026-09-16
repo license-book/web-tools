@@ -1,0 +1,5 @@
+import type { Metadata } from 'next';
+import ImageMapGenerator from '@/components/tools/ImageMapGenerator';
+
+export const metadata:Metadata={title:'HTML 이미지맵 생성기',description:'이미지에서 클릭 영역을 지정해 HTML map·area 코드를 생성합니다.'};
+export default function Page(){return <main><section className="categoryHero"><div className="container categoryHeroInner"><div><span className="eyebrow">DEVELOPER TOOL</span><h1>HTML 이미지맵 생성기</h1><p>이미지를 올리고 클릭 영역을 드래그해 HTML &lt;map&gt;·&lt;area&gt; 코드를 만듭니다.</p><div className="trustRow"><span>✓ 무료</span><span>✓ 회원가입 없음</span><span>✓ 브라우저 처리</span><span>✓ 코드 복사</span></div></div></div></section><section className="section"><div className="container"><div className="toolPanel"><div className="toolPanelHead"><div><span className="eyebrow darkEyebrow">TOOL WORKSPACE</span><h2>이미지맵 만들기</h2></div><span className="privacyChip">브라우저 중심 처리</span></div><ImageMapGenerator/></div></div></section></main>;}
